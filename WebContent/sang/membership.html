@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+<meta charset="UTF-8">
+<title>맨파</title>
+<script type="text/javascript">
+function sendIt() {
+    var email = document.f.mail.value;
+    var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+      var msg, ss, cc;
+      //정규표현식
+
+    //아이디 입력여부 검사
+    if (f.id.value == "") {
+        alert("아이디를 입력하지 않았습니다.")
+        f.id.focus();
+        return false;
+    }
+    //아이디 유효성 검사 (영문소문자, 숫자만 허용)
+   for (var i = 0; i < document.f.id.value.length; i++) {
+        ch = document.f.id.value.charAt(i)
+        if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z')&&!(ch >= 'A' && ch <= 'Z')) {
+            alert("아이디는 영문 대소문자, 숫자만 입력가능합니다.")
+            document.f.id.focus();
+            document.f.id.select();
+            return false;
+        }
+    }
+    //아이디에 공백 사용하지 않기
+    if (document.f.id.value.indexOf(" ") >= 0) {
+        alert("아이디에 공백을 사용할 수 없습니다.")
+        document.f.id.focus();
+        document.f.id.select()
+        return false;
+    }
+    //아이디 길이 체크 (4~12자)
+   if (document.f.id.value.length<6 || document.f.id.value.length>12) {
+        alert("아이디를 6~12자까지 입력해주세요.")
+        document.f.id.focus();
+        document.f.id.select();
+        return false;
+    }
+       //비밀번호 입력여부 체크
+    if (document.f.pass.value == "") {
+        alert("비밀번호를 입력하지 않았습니다.")
+        document.f.pass.focus();
+        return false;
+    }
+    if (f.pass.value == f.id.value) {
+        alert("아이디와 비밀번호가 같습니다.")
+        document.f.pass.focus();
+        return false;
+    }
+    //비밀번호 길이 체크(8~15자 까지 허용)
+    if (document.f.pass.value.length<8 || document.f.pass.value.length>15) {
+        alert("비밀번호를 8~15자까지 입력해주세요.")
+        document.f.pass.focus();
+        document.f.pass.select();
+        return false;
+    }
+    //비밀번호와 비밀번호 확인 일치여부 체크
+    if (document.f.pass.value != document.f.pass1.value) {
+        alert("비밀번호가 일치하지 않습니다")
+        document.f.pass1.value = ""
+        document.f.pass1.focus();
+        return false;
+    }
+    if (document.f.pass.value != document.f.pass1.value) {
+        alert("비밀번호가 일치하지 않습니다")
+        document.f.pass1.value = ""
+        document.f.pass1.focus();
+        return false;
+    }
+
+    
+
+    if (document.f.name.value == "") {
+        alert("이름을 입력하지 않았습니다.")
+        document.f.name.focus();
+        return false;
+    }
+
+    if(document.f.name.value.length<2){
+        alert("이름을 2자 이상 입력해주십시오.")
+        document.f.name.focus();
+        return false;
+    }
+    if (document.f.year.value == "") {
+        alert("생년월일을 입력하지 않았습니다.")
+        return false;
+    }
+    if (document.f.year.value.length !=4) {
+        alert("년도는 4자리입니다 ex)1995")
+        document.f.year.focus();
+        document.f.year.select();
+        return false;
+    }
+    if (document.f.mail.value == "") {
+        alert("이메일을 입력하지 않았습니다.")
+        document.f.mail.value = ""
+        document.f.mail.focus();
+        return false;
+    }
+
+    for (var i = 0; i < document.f.mail.value.length; i++) {
+        chm = document.f.mail.value.charAt(i)
+        if (!(chm >= '0' && chm <= '9') && !(chm >= 'a' && chm <= 'z')&&!(chm >= 'A' && chm <= 'Z') &&! (chm == "@") &&! (chm == ".")) {
+            alert("이메일은 영문 대소문자,숫자만 입력가능합니다.")
+            document.f.mail.focus();
+            document.f.mail.select();
+            return false;
+        }
+    }
+    if (document.f.gender.value == "") {
+        alert("성별을 선택하지 않았습니다.")
+        return false;
+    }
+   
+    
+}
+
+     
+function checkPost(){
+	window.open("../checkpost.jsp","","width=500 height=500 scrollbars=yes");
+}
+
+function checkId(){
+	window.open("../idcheck2.jsp","","width=500 height=500 scrollbars=yes");
+}
+</script>
+<style>
+
+body {
+   font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+   color: #333333;
+   background: #FFFFFF;
+   position:relative;
+   top:180px;
+   left:90px;
+   
+}
+
+.signUp {
+   position: relative;
+   margin: 5px auto;
+   width: 450px;
+   background: #FFFFFF;
+}
+
+
+
+.signUpTitle {
+	paddin-bottom:10px;
+   line-height: 1px;
+   font-size: 17px;
+   font-weight: 300;
+   color: #777;
+   text-align: left;
+   text-shadow: 0 1px rgba(255, 255, 255, 0.75);
+   background: #ffffff;
+}
+
+
+
+input {
+   font-family: inherit;
+   color: inherit;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+.signUpInput {
+   	width: 80%;
+   	height: 50px;
+   	margin:-5px;	
+   	font-size: 18px;
+   	background: white;
+   	border: 2px solid #E1E1E1;
+   	border-radius: 4px;
+   	-webkit-box-shadow: inset 0 -2px #E1E1E1;
+   	box-shadow: inset 0 -2px #E1E1E1;
+   	
+}
+
+.signUpInput:focus {
+   border-color: #CFCFCF;
+   outline: none;
+   -webkit-box-shadow: inset 0 -2px #CFCFCF;
+   box-shadow: inset 0 -2px #CFCFCF;
+}
+
+.signUpBirth {
+   	width: 20%;
+   	height: 30px;
+   	margin:-5px;	
+   	font-size: 13px;
+   	background: white;
+   	border: 2px solid #EBEBEB;
+   	border-radius: 2px;
+   	-webkit-box-shadow: inset 0 -1px #EBEBEB;
+   	box-shadow: inset 0 -1px #EBEBEB;
+}
+
+
+
+
+.signUpButton {
+   position: relative;
+   vertical-align: left;
+   width: 77%;
+   height: 40px;
+   padding: 0;
+   margin-top:20px;
+   font-size: 22px;
+   color: white;
+   text-align: center;
+   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+   background: #00C6ED;
+   border: 0;
+   border-bottom: 2px solid #00C6ED;
+   border-radius: 5px;
+   cursor: pointer;
+   -webkit-box-shadow: inset 0 -2px #00C6ED;
+   box-shadow: inset 0 -2px #00C6ED;
+}
+
+
+div{
+	position:relative;
+	bottom:170px;
+	right:50px;
+}
+
+
+.month{
+	width:60px;
+	height:25px;
+	padding-left:17px;
+	position:absolute;
+	left:100px;
+	bottom:442px;
+}
+.day{
+	width:60px;
+	height:25px;
+	padding-left:17px;
+	position:absolute;
+	left:175px;
+	bottom:442px;
+}
+#adress{
+	position:relative;
+	top:10px;
+}
+.search{
+	width: 15%;
+	height:100%;
+    border:none;
+    font-size:18px;
+    color:white;
+    outline:none;
+    display:inline;
+    margin-left: -72px;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #00C6ED;
+   	box-shadow: inset 0 -2px #00C6ED;
+   	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+   	background: #00C6ED;
+   	border: 0;
+  	border-bottom: 2px solid #00C6ED;
+   	border-radius: 5px;
+}
+
+.search1{
+	width: 20%;
+	height:100%;
+    border:none;
+    font-size:18px;
+    color:white;
+    outline:none;
+    display:inline;
+    margin-left: -95px;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #00C6ED;
+   	box-shadow: inset 0 -2px #00C6ED;
+   	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+   	background: #00C6ED;
+   	border: 0;
+  	border-bottom: 2px solid #00C6ED;
+   	border-radius: 5px;
+}
+
+
+.image{
+	display:block;
+	margin:0px auto; 
+	width:200px;
+	height:150px;
+}
+
+.rule{
+	color:gray;
+}
+
+
+</style>
+</head>
+
+
+<body>
+	<div class="line">
+	<a href="../main.jsp"><img src="logo.png" class="image"></a>
+		
+</div>
+
+<form method="post" name="f" action="../joinOk.jsp" class="signUp" onsubmit="return sendIt();">
+	<h1 class="signUpTitle">회원가입</h1>
+	<br>
+	<h4>아이디</h4>
+   	<input type="text" name="id" id="id" class="signUpInput" maxlength="12" size="12" required autofocus>
+   	<input type="button"  value="중복 확인" class="search1" onClick="javascript:checkId()">
+   	<h5 class="rule">* 아이디는 6~12자로 만들어주십시오.</h5>
+   	<h4>비밀번호</h4>
+   	<input type="password" name="pass" id="pass" class="signUpInput" required>
+   	<h5 class="rule">* 비밀번호는 영문자/특수기호를 포함한 8~15자로 만들어 주십시오.</h5>
+   	<h4>비밀번호 확인</h4>
+   	<input type="password" name="pass1" id="pass1" class="signUpInput" required>
+   	<h4>이름</h4>
+   	<input type="text" name="name" id="name" class="signUpInput" required>
+   	<h4>생년&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp월&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp일</h4>
+   	<input type="text" id="year" name="year" class="signUpBirth" placeholder="4자리">
+   	<select id="month" name="month" class="month">
+   		<option value="1">1</option>
+   		<option value="2">2</option>
+   		<option value="3">3</option>
+   		<option value="4">4</option>
+   		<option value="5">5</option>
+   		<option value="6">6</option>
+   		<option value="7">7</option>
+   		<option value="8">8</option>
+   		<option value="9">9</option>
+   		<option value="10">10</option>
+   		<option value="11">11</option>
+   		<option value="12">12</option>
+   	</select>
+   	<select id="day" name="day" class="day">
+   		<option value="1">1</option>
+   		<option value="2">2</option>
+   		<option value="3">3</option>
+   		<option value="4">4</option>
+   		<option value="5">5</option>
+   		<option value="6">6</option>
+   		<option value="7">7</option>
+   		<option value="8">8</option>
+   		<option value="9">9</option>
+   		<option value="10">10</option>
+   		<option value="11">11</option>
+   		<option value="12">12</option>
+   		<option value="13">13</option>
+   		<option value="14">14</option>
+   		<option value="15">15</option>
+   		<option value="16">16</option>
+   		<option value="17">17</option>
+   		<option value="18">18</option>
+   		<option value="19">19</option>
+   		<option value="20">20</option>
+   		<option value="21">21</option>
+   		<option value="22">22</option>
+   		<option value="23">23</option>
+   		<option value="24">24</option>
+   		<option value="25">25</option>
+   		<option value="26">26</option>
+   		<option value="27">27</option>
+   		<option value="28">28</option>
+   		<option value="29">29</option>
+   		<option value="30">30</option>
+   		<option value="31">31</option>
+   	</select>
+
+
+   	
+   	<h4>이메일</h4>
+   	<input type="text"  id="mail" name="eMail" class="signUpInput" required>
+   	<br>
+   	<h4>성별</h4>
+   	<input type="radio" name="gender" value="man">남
+	<input type="radio" name="gender" value="woman">여
+	<br>
+	<h4>우편번호</h4>
+   	<input type="text" id="post2" name="post"  class="signUpInput">
+   	<input type="button" value="찾기" class="search" onClick="javascript:checkPost()">
+   	<br>
+   	<input type="text" class="signUpInput" id="adress2" name="adress">
+   	<br>
+   	<input type="text" class="signUpInput" id="adress3" name="adress2">
+   	<br>
+   	<input type="submit" name="submit" value="회원가입" class="signUpButton">
+   	<br><br><br>
+   	
+
+   	
+</form>
+
+</body>
+</html>
