@@ -1,0 +1,13 @@
+create table mp_login(
+	id varchar(50)not null,
+	pass varchar(50) not null,
+	name varchar(50)not null,
+	birth varchar(20),
+	eMail varchar(50),
+	gender varchar(10),
+	addr varchar(200),
+	rDate date not null
+);
+
+
+drop table joinform;
