@@ -1,24 +1,20 @@
 package com.manpa.board.command;
 
-import java.sql.Timestamp;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.manpa.board.Dao.BDao;
+import com.manpa.board.Dto.BDto;
 
-
-
-public class BWriteCommand implements BCommand {
+public class BModifyViewCommnad implements BCommand {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String name = request.getParameter("name");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		
+		String id = request.getParameter("id");
 		BDao dao = new BDao();
-		dao.write(name, title, content);
+		BDto dto = dao.contentView(id);
+		
+		request.setAttribute("modify_view", dto);
+		
 	}
-
 }

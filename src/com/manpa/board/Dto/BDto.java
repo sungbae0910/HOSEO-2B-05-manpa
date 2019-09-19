@@ -4,40 +4,40 @@ import java.sql.Timestamp;
 
 public class BDto {
 	
-	int num;
-	String writer;
+	int id;
+	String name;
 	String title;
 	String content;
-	Timestamp issue_date;
+	Timestamp bDate;
 	int readcount;
 	
 	public BDto() {
 		
 	}
 	
-	public BDto(int num, String writer, String title, String content, Timestamp issue_date, int readcount) {
-		this.num = num;
-		this.writer = writer;
+	public BDto(int id, String name, String title, String content, Timestamp bDate, int readcount) {
+		this.id = id;
+		this.name = name;
 		this.title = title;
 		this.content = content;
-		this.issue_date = issue_date;
+		this.bDate = bDate;
 		this.readcount = readcount;
 	}
 
-	public int getNum() {
-		return num;
+	public int getId() {
+		return id;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getWriter() {
-		return writer;
+	public String getName() {
+		return name;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getTitle() {
@@ -56,12 +56,12 @@ public class BDto {
 		this.content = content;
 	}
 
-	public Timestamp getIssue_date() {
-		return issue_date;
+	public Timestamp getbDate() {
+		return bDate;
 	}
 
-	public void setIssue_date(Timestamp issue_date) {
-		this.issue_date = issue_date;
+	public void setbDate(Timestamp bDate) {
+		this.bDate = bDate;
 	}
 
 	public int getReadcount() {
@@ -71,6 +71,8 @@ public class BDto {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
+
+
 	
 
 	

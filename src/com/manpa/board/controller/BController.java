@@ -1,6 +1,8 @@
 package com.manpa.board.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,10 +13,8 @@ import com.manpa.board.command.BContentCommand;
 import com.manpa.board.command.BDeleteCommand;
 import com.manpa.board.command.BListCommand;
 import com.manpa.board.command.BModifyCommand;
-import com.manpa.board.command.BReplyCommand;
-import com.manpa.board.command.BReplyViewCommand;
+import com.manpa.board.command.BModifyViewCommnad;
 import com.manpa.board.command.BWriteCommand;
-
 /**
  * Servlet implementation class BController
  */
@@ -49,13 +49,17 @@ public class BController extends HttpServlet {
 		
 		String viewPage = null;
 		BCommand command = null;
-		
+
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
 		if(com.equals("/write_view.do")) {
 			viewPage = "write_view.jsp";
+		}else if(com.equals("/modify_view.do")) {
+			command = new BModifyViewCommnad();
+			command.execute(request, response);
+			viewPage = "modify_view.jsp";
 		} else if(com.equals("/write.do")) {
 			command = new BWriteCommand();
 			command.execute(request, response);
@@ -76,15 +80,9 @@ public class BController extends HttpServlet {
 			command = new BDeleteCommand();
 			command.execute(request, response);
 			viewPage = "list.do";
-		} else if(com.equals("/reply_view.do")) {
-			command = new BReplyViewCommand();
-			command.execute(request, response);
-			viewPage = "reply_view.jsp";
-		} else if(com.equals("/reply.do")) {
-			command = new BReplyCommand();
-			command.execute(request, response);
-			viewPage = "list.do";
 		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
 	}
 	
 
