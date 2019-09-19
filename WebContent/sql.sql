@@ -1,6 +1,6 @@
 select * from manpaboard
 
-delete from manpaboard
+delete from manpaboard;
 select num from manpaboard order by num desc
 select * from file
 select * from manpaboard where num < 1 order by num desc limit 9
@@ -41,7 +41,7 @@ select mainimg from manpaboard
 drop table manpaboard
 drop table comment
 drop table recomment
-
+delete from manpaboard;
 
 
 CREATE TABLE board (
