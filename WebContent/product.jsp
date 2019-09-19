@@ -521,10 +521,6 @@ if(request.getParameter("num")!=null){
 
 
 
-
-
-
-
 <div class="content">
 	<input type="button" value="서비스 설명" class="move" onclick="fnMove('1')">
 	<input type="button" value="가격 정보" class="move" onclick="fnMove('2')">

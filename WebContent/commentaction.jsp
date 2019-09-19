@@ -27,6 +27,7 @@
 		script.println("history.back()");
 		script.println("</script>");
 		
+		
 	%>
 </body>
 </html>

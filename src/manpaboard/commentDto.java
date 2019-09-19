@@ -1,5 +1,6 @@
 package manpaboard;
 
+
 public class commentDto {
 	private String writer;
 	private String contents;

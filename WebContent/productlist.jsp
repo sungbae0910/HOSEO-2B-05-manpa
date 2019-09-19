@@ -280,6 +280,8 @@ tr{
 	<a href="main.jsp"><img src="img/logo.png" class="logoimage"></a>
 	</c:otherwise>
 	</c:choose>      
+	
+	
 </div>
 <div class="menubar">
    	<ul>

@@ -1,5 +1,6 @@
 package manpaboard;
 
+
 public class Bdto {
 	private int num;
 	private String title;
